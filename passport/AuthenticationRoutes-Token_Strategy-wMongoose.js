@@ -7,6 +7,7 @@ For MONGOOSE integration
 
 DEPENDENCIES
 JWT
+dotenv
 
 */
 
@@ -27,6 +28,17 @@ import {Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
 // #3 Require our custom strategies.  This is an import of our
 //    Passport.js file which contains the Secrt + Hashing algorithm.
 require('../services/passport');
+
+
+// ###### goes into top level file like index.js #################
+// #30 IMPORTANT ENVIRONMENT
+require('dotenv').config();  //<---- goes in top level file
+
+// #31
+const port = proces.env.PORT || 3001; //  <--- goes right about the "listen line"
+// ###########################################
+
+
 
 // #4 create variable for passing around
 const signinStrategy = passport.authenticate('signinStrategy', { session: false });
